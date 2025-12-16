@@ -1,12 +1,13 @@
 import {useEffect, useState} from 'react';
 import {fetchData} from '../utils/fetchData';
+import {mapStandings} from '../utils/standingsMapper';
 const useStandings = () => {
   const [standingsArray, setStandingsArray] = useState([]);
   const getStandings = async () => {
     try {
       const json = await fetchData(`${import.meta.env.BASE_URL}standings.json`);
-      setStandingsArray(json.standings);
-      console.log('poo');
+      const mappedStandings = mapStandings(json.standings);
+      setStandingsArray(mappedStandings);
     } catch (error) {
       console.error('error', error);
     }

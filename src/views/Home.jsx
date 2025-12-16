@@ -1,20 +1,32 @@
 import {useStandings} from '../hooks/useStandings';
 import {useState, useEffect} from 'react';
-import {fetchData} from '../utils/fetchData';
 import TeamRowLong from '../components/TeamRowLong';
+import Table from '../components/Table';
 
 const Home = () => {
   //const [menuData, setMenuData] = useState({});
   //const {getStandings} = useStandings();
   const {standingsArray} = useStandings();
   //const [standingsArray, setStandingsArray] = useState([]);
-
-  console.log(standingsArray);
+  const columns = [
+    {label: 'Team', accessor: 'teamAbbrev.default'},
+    {label: 'PTS', accessor: 'points'},
+    {label: '321PTS', accessor: 'threeTwoOnePoints'},
+    {label: 'W/LPTS', accessor: 'wlPoints'},
+    {label: 'GP', accessor: 'gamesPlayed'},
+    {label: 'W', accessor: 'wins'},
+    {label: 'L', accessor: 'losses'},
+    {label: 'OTL', accessor: 'otLosses'},
+    {label: 'P%', accessor: 'pointPctg'},
+    {label: 'RW', accessor: 'regulationWins'},
+    {label: 'OTW', accessor: 'otWins'},
+  ];
 
   return (
     <>
       <h2>NHL Current Standings</h2>
-      <table>
+      <Table columns={columns} tableData={standingsArray} />
+      {/*} <table>
         <thead>
           <tr>
             <th>Team</th>
@@ -25,7 +37,6 @@ const Home = () => {
             <th>W</th>
             <th>L</th>
             <th>OTL</th>
-
             <th>P%</th>
             <th>RW</th>
             <th>OTW</th>
@@ -37,7 +48,7 @@ const Home = () => {
             <TeamRowLong key={team.teamName.default} team={team} />
           ))}
         </tbody>
-      </table>
+      </table> */}
     </>
   );
 };
