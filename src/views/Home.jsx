@@ -9,6 +9,7 @@ const Home = () => {
   const {standingsArray} = useStandings();
   //const [standingsArray, setStandingsArray] = useState([]);
   const columns = [
+    {label: 'Logo', accessor: 'teamLogoLocal'},
     {label: 'Team', accessor: 'teamAbbrev.default'},
     {label: 'PTS', accessor: 'points'},
     {label: '321PTS', accessor: 'threeTwoOnePoints'},

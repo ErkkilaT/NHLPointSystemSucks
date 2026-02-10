@@ -8,10 +8,11 @@ const Table = (props) => {
     key: 'points',
     direction: 'desc',
   });
-
+  console.log(tableData);
   const getValue = (obj, path) => {
     return path.split('.').reduce((acc, key) => acc?.[key], obj);
   };
+
   const sortedData = useMemo(() => {
     if (!sortConfig.key) return tableData;
 

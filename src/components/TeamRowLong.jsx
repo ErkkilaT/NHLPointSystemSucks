@@ -17,3 +17,5 @@ const TeamRowLong = (props) => {
   );
 };
 export default TeamRowLong;
+
+

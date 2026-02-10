@@ -8,6 +8,7 @@ const mapStandings = (raw) => {
         team.otLosses,
       otWins: team.wins - team.regulationWins,
       wlPoints: (team.points - team.otLosses) / 2,
+      teamLogoLocal: `src/assets/logos/${team.teamAbbrev.default}.svg`,
     };
   });
   return result;

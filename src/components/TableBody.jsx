@@ -1,3 +1,4 @@
+import './TableBody.css';
 const TableBody = (props) => {
   const {columns, tableData} = props;
   const getValue = (obj, path) => {
@@ -12,7 +13,19 @@ const TableBody = (props) => {
           <tr key={data.teamName.default}>
             {columns.map(({accessor}) => {
               const tData = getValue(data, accessor) ?? '-';
-              return <td key={accessor}>{tData}</td>;
+              if (accessor != 'teamLogoLocal') {
+                return <td key={accessor}>{tData}</td>;
+              } else if (accessor == 'teamLogoLocal') {
+                return (
+                  <td>
+                    <img
+                      src={data.teamLogoLocal}
+                      alt={data.teamAbbrev.default}
+                      className="team-logo"
+                    ></img>
+                  </td>
+                );
+              }
             })}
           </tr>
         );
